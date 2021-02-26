@@ -2,13 +2,13 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <th:block th:insert="fragments/base :: headerFiles"></th:block>
     <title>View Favorite Form</title>
-    <link rel="stylesheet" th:href="@{/css/base.css}">
 </head>
 <body>
 <div th:replace="fragments/base :: header"></div>
 <h2>Your Favorite: <span th:text="${fullFavorite}"></span></h2>
 
 </body>
+<div th:replace="fragments/base :: scripts"></div>
 </html>

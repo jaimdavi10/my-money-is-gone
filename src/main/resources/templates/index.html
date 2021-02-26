@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <title>Home</title>
+    <th:block th:insert="fragments/base :: headerFiles"></th:block>
 </head>
 <body>
 <div th:replace="fragments/base :: header"></div>
 
 </body>
+<div th:replace="fragments/base :: scripts"></div>
 </html>
