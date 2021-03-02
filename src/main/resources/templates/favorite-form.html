@@ -6,6 +6,7 @@
     <title>Favorite Form</title>
 </head>
 <body>
+<div th:replace="fragments/base :: navigation"></div>
 <div th:replace="fragments/base :: header"></div>
 
 <form id="favform"th:action="@{/favorite}" th:object="${favorite}" method="post">
