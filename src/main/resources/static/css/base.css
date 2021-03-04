@@ -16,3 +16,23 @@ h2 {
     width:50px;
     height:50px;
 }
+
+#price {
+    border: 2px solid limegreen;
+}
+
+#name{
+    border: 2px solid limegreen;
+}
+
+#purchaseLocation {
+    border: 2px solid limegreen;
+}
+
+label {
+    font-weight: bold;
+}
+
+#button {
+    background-color: #99FF66;
+}
