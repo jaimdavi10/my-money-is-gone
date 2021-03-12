@@ -1,7 +1,9 @@
 package com.mymoneyisgone.controllers;
 
 
+import com.mymoneyisgone.data.PurchaseEntryRepository;
 import com.mymoneyisgone.models.PurchaseEntry;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
     @RequestMapping("/entry")
     public class PurchaseEntryController {
 
+        private PurchaseEntryRepository per;
+
+        @Autowired
+        public PurchaseEntryController (PurchaseEntryRepository per){
+            this.per = per;
+        }
+
         @GetMapping
         public String showPurchaseEntryForm (Model model){
 
@@ -25,12 +34,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
         }
 
         @PostMapping
-        public String handlePurchaseEntryForm (@ModelAttribute("purchaseEntry") PurchaseEntry purchaseEntry, RedirectAttributes attributes){
+        public String handlePurchaseEntryForm (@ModelAttribute("purchaseEntry") PurchaseEntry purchaseEntry){
 
-            attributes.addFlashAttribute("fullEntry", purchaseEntry);
-            System.out.println("Price: "+purchaseEntry.getPrice());
-            System.out.println("Name: "+purchaseEntry.getName());
-            System.out.println("Purchase Location: "+purchaseEntry.getPurchaseLocation());
+            this.per.save(purchaseEntry);
 
             return "redirect:/view";
 

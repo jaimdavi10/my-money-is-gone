@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ViewPurchaseEntryController {
 
     @GetMapping
-    public String showPurchaseEntryView (@ModelAttribute("fullEntry") Object flashAttribute, Model model){
+    public String showPurchaseEntryView (Model model){
 
-        model.addAttribute("fullEntry", flashAttribute);
+
         return "display-purchase";
 
     }
