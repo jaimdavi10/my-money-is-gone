@@ -3,13 +3,13 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:insert="fragments/base :: headerFiles"></th:block>
-    <title>Favorite Form</title>
+    <title>Purchase Entry</title>
 </head>
 <body>
 <div th:replace="fragments/base :: navigation"></div>
 <div th:replace="fragments/base :: header"></div>
 
-<form id="favform" th:action="@{/favorite}" th:object="${favorite}" method="post">
+<form id="purchaseform" th:action="@{/entry}" th:object="${entry}" method="post">
     <div>
         <label for = "price">Price of Product: </label>
         <input id = "price" type = "number" step="any" th:field="*{price}"/>

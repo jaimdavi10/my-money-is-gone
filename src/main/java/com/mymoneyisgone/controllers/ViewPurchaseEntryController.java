@@ -1,6 +1,6 @@
 package com.mymoneyisgone.controllers;
 
-import com.mymoneyisgone.models.Favorite;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/favoriteview")
-public class ViewFavoriteController {
+@RequestMapping("/view")
+public class ViewPurchaseEntryController {
 
     @GetMapping
-    public String showFavoriteView (@ModelAttribute("fullFavorite") Object flashAttribute, Model model){
+    public String showPurchaseEntryView (@ModelAttribute("fullEntry") Object flashAttribute, Model model){
 
-        model.addAttribute("fullFavorite", flashAttribute);
-        return "display-favorite";
+        model.addAttribute("fullEntry", flashAttribute);
+        return "display-purchase";
 
     }
 

@@ -22,8 +22,10 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{/}">Home</a></li>
-                <li class="nav-item" th:classappend="${#request.getServletPath() == '/favorite' ? 'active' : ''}">
-                    <a class="nav-link" th:href="@{/favorite}">Favorite Form</a></li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/entry' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/entry}">Purchase Entry</a></li>
+                 <!-- <li class="nav-item" th:classappend="${#request.getServletPath() == '/favorite' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/favorite}">Favorite Form</a></li> -->
             </ul>
 
         </div>

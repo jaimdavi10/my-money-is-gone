@@ -30,7 +30,7 @@ public class FavoriteController {
         System.out.println("Name: "+favorite.getName());
         System.out.println("Purchase Location: "+favorite.getPurchaseLocation());
 
-        return "redirect:/view";
+        return "redirect:/favoriteview";
 
     }
 
