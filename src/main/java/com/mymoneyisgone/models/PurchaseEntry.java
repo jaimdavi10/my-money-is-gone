@@ -1,6 +1,10 @@
 package com.mymoneyisgone.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -9,13 +13,22 @@ public class PurchaseEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long entryId;
+
+    @NotNull(message = "Price of product is required")
     private double price;
+
+    @NotBlank(message = "Name of product is required")
+    @Size(min=2, message = "Name of product must be 2 or more characters")
     private String name;
+
+    @NotBlank(message = "Product purchasing location is required")
+    @Size(min=2, message = "Name of product purchase location must be 2 or more characters")
     private String purchaseLocation;
+
     private LocalDateTime created;
     private LocalDateTime modified;
 
-    public PurchaseEntry (){};
+    public PurchaseEntry (){}
 
     public PurchaseEntry (double price, String name, String purchaseLocation){
 

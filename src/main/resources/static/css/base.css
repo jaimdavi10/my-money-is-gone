@@ -52,10 +52,19 @@ label {
 }
 
 .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 60px;
     line-height: 60px;
     background-color: #99FF66;
+}
+
+.clear {
+    clear: both;
+    height: 75px; }
+
+#card {
+    background-color: #CCFF99;
+    border: 2px solid limegreen;
 }

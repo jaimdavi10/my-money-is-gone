@@ -35,11 +35,16 @@
         <h1>My Money is Gone</h1>
     </div>
 
-    <footer class="footer" th:fragment="footer">
-        <div class="container text-center">
-            <span class="text-muted">Copyright @2021 Jaime Davila</span>
-        </div>
-    </footer>
+    <div th:fragment="footer">
+        <div class="clear"></div>
+        <footer class="footer mt-5" >
+            <div class="container text-center">
+                <span class="text-muted">Copyright 2021 Jaime Davila</span>
+            </div>
+        </footer>
+    </div>
+
+
 </body>
 <th:block th:fragment="scripts">
     <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
