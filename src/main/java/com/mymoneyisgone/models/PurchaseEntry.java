@@ -1,10 +1,7 @@
 package com.mymoneyisgone.models;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,6 +12,7 @@ public class PurchaseEntry {
     private long entryId;
 
     @NotNull(message = "Price of product is required")
+    @Positive(message = "Price of product must be higher than zero")
     private double price;
 
     @NotBlank(message = "Name of product is required")
