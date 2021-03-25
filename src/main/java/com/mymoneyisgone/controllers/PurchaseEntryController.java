@@ -51,5 +51,33 @@ import javax.validation.Valid;
 
         }
 
+        @PostMapping("/edit/{id}")
+        public String handleEditPurchaseForm(@PathVariable Long id, @Valid @ModelAttribute("entry") PurchaseEntry purchaseEntry, Errors errors){
+
+            if(errors.hasErrors())
+                return "view-purchase";
+
+            PurchaseEntry originalEntry = this.per.findById(id).get();
+            updateOriginalPurchase(originalEntry, purchaseEntry);
+            this.per.save(originalEntry);
+
+            return "redirect:/view";
+        }
+
+        private void updateOriginalPurchase(PurchaseEntry original, PurchaseEntry update){
+            original.setPrice(update.getPrice());
+            original.setName(update.getName());
+            original.setPurchaseLocation(update.getPurchaseLocation());
+
+        }
+
+        @GetMapping("/delete/{id}")
+        public String deleteEntry(@PathVariable Long id){
+
+            this.per.deleteById(id);
+            return "redirect:/view";
+
+        }
+
     }
 

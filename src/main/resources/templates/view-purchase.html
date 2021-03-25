@@ -10,13 +10,13 @@
     <div th:replace="fragments/base :: navigation"></div>
     <div th:replace="fragments/base :: header"></div>
 
-    <div class="container-fluid">
+    <div class="container-fluid mt-3">
         <div class="row justify-content-center">
             <h3 class="text-center col-12">View/Edit Purchase</h3>
         </div>
     </div>
 
-    <form id="purchaseform" th:action="@{/entry}" th:object="${purchaseEntry}" method="post">
+    <form id="purchaseform" th:action="@{/entry/edit/{id}(id=${purchaseEntry.entryId})}" th:object="${purchaseEntry}" method="post">
         <div class="container-fluid">
             <div class="row justify-content-center form-group">
                 <!-- <label for="price" class="col-2 col-md-1 col-form-label">Price: </label> -->
@@ -62,9 +62,17 @@
                 </div>
             </div>
 
+            <div class="row justify-content-center form-group">
+                <div class="col-8 col-md-3">
+                    <span th:text="'Date created: ' + ${#temporals.format(purchaseEntry.created, 'dd-MM-yyyy HH:mm')}"></span><br/>
+                    <span th:text="'Date modified: ' + ${#temporals.format(purchaseEntry.modified, 'dd-MM-yyyy HH:mm')}"></span><br/>
+                </div>
+            </div>
+
             <div class="row justify-content-center">
                 <div class="col-8 col-md-3">
                     <input type="submit" class="btn btn-light btn-outline-dark" value="Submit" />
+                    <a class="ml-2 btn btn-light btn-outline-dark" th:href="@{/view}">Cancel</a>
                 </div>
             </div>
         </div>
