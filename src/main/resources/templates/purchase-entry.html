@@ -10,11 +10,12 @@
 <div th:replace="fragments/base :: header"></div>
 
 <form id="purchaseform" th:action="@{/entry}" th:object="${entry}" method="post">
-    <!-- <div class="container-fluid">
-        <div class="row justify-content-center">
+    <div class="container-fluid">
+        <div class="row justify-content-center form-group">
+            <!-- <label for="price" class="col-2 col-md-1 col-form-label">Price: </label> -->
             <div class="col-8 col-md-3">
                 <input class="form-control" id="price" type="number" step="any" th:field="*{price}"
-                       placeholder="Price"/>
+                       placeholder="Purchase Price"/>
             </div>
         </div>
         <div class="row justify-content-center mb-3">
@@ -28,7 +29,7 @@
         <div class="row justify-content-center">
             <div class="col-8 col-md-3">
                 <input class="form-control" id="name" type="text" th:field="*{name}"
-                       placeholder="Name"/>
+                       placeholder="Purchase Name"/>
             </div>
         </div>
         <div class="row justify-content-center mb-3">
@@ -39,13 +40,13 @@
             </div>
         </div>
 
-        <div class="row justify-content-center form-group">
-            <label for="purchaseLocation" class="col-2 col-md-1 col-form-label">Age:</label>
-            <div class="col-3 col-md-1">
-                <input class="form-control" id="purchaseLocation" type="text" th:field="*{purchaseLocation}"/>
+        <div class="row justify-content-center">
+            <div class="col-8 col-md-3">
+                <input class="form-control" id="purchaseLocation" type="text" th:field="*{purchaseLocation}"
+                placeholder="Purchase Location"/>
             </div>
-            <div class="col-3 col-md-1"></div>
         </div>
+
         <div class="row justify-content-center mb-3">
             <div class="col-8 col-md-3">
                     <span class="text-danger small" th:if="${#fields.hasErrors('purchaseLocation')}"
@@ -60,9 +61,9 @@
             </div>
         </div>
     </div>
-   -->
 
-    <div>
+
+    <!-- <div>
         <label for = "price">Price of Product: </label>
         <input id = "price" type = "number" step="any" th:field="*{price}"/>
     </div>
@@ -101,7 +102,7 @@
 
     <br/>
     <input id="button" type="submit" value = "Submit"/>
-    <br/>
+    <br/> -->
 
 </form>
 <div th:replace="fragments/base :: footer"></div>

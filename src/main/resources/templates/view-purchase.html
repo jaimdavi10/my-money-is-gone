@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Purchase</title>
+    <th:block th:insert="fragments/base :: headerFiles"></th:block>
+</head>
+<body>
+    <div th:replace="fragments/base :: navigation"></div>
+    <div th:replace="fragments/base :: header"></div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <h3 class="text-center col-12">View/Edit Purchase</h3>
+        </div>
+    </div>
+
+    <form id="purchaseform" th:action="@{/entry}" th:object="${purchaseEntry}" method="post">
+        <div class="container-fluid">
+            <div class="row justify-content-center form-group">
+                <!-- <label for="price" class="col-2 col-md-1 col-form-label">Price: </label> -->
+                <div class="col-8 col-md-3">
+                    <input class="form-control" id="price" type="number" step="any" th:field="*{price}"
+                           placeholder="Purchase Price"/>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-3">
+                <div class="col-8 col-md-3">
+                    <span class="text-danger small" th:if="${#fields.hasErrors('price')}"
+                          th:errors="*{price}">
+                    </span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-3">
+                    <input class="form-control" id="name" type="text" th:field="*{name}"
+                           placeholder="Purchase Name"/>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-3">
+                <div class="col-8 col-md-3">
+                    <span class="text-danger small" th:if="${#fields.hasErrors('name')}"
+                          th:errors="*{name}">
+                    </span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-3">
+                    <input class="form-control" id="purchaseLocation" type="text" th:field="*{purchaseLocation}"
+                           placeholder="Purchase Location"/>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-8 col-md-3">
+                    <span class="text-danger small" th:if="${#fields.hasErrors('purchaseLocation')}"
+                          th:errors="*{purchaseLocation}">
+                    </span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-3">
+                    <input type="submit" class="btn btn-light btn-outline-dark" value="Submit" />
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div th:replace="fragments/base :: footer"></div>
+</body>
+<div th:replace="fragments/base :: scripts"></div>
+</html>
