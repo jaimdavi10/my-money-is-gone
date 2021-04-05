@@ -3,6 +3,7 @@ package com.mymoneyisgone.models;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 public class PurchaseEntry {
@@ -25,6 +26,8 @@ public class PurchaseEntry {
 
     private LocalDateTime created;
     private LocalDateTime modified;
+
+    //private Set<ProductType> productTypes;
 
     public PurchaseEntry (){}
 
