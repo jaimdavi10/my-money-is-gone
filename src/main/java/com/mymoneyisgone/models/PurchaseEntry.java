@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
+
 public class PurchaseEntry {
 
     @Id
@@ -26,6 +27,10 @@ public class PurchaseEntry {
 
     private LocalDateTime created;
     private LocalDateTime modified;
+
+    @OneToOne( cascade = CascadeType.ALL)
+    @JoinColumn(name = "type_id" ,referencedColumnName = "id")
+    private ProductType productType;
 
     //private Set<ProductType> productTypes;
 
