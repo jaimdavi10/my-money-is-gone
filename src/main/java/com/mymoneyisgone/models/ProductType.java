@@ -20,6 +20,17 @@ public class ProductType {
         this.name = name;
     }
 
+
+    public PurchaseEntry getPurchaseEntry () {
+        return this.purchaseEntry;
+    }
+
+    public void setPurchaseEntry (PurchaseEntry pe) {
+
+        this.purchaseEntry = pe;
+
+    }
+
     public String getName() {
         return this.name;
     }
@@ -42,4 +53,10 @@ public class ProductType {
         ProductType pt = (ProductType) o;
         return this.name.equals(pt.name);
     }
+
+    @Override
+    public int hashCode () {
+        return this.name.hashCode();
+    }
+
 }

@@ -44,6 +44,18 @@ public class PurchaseEntry {
 
     }
 
+    public ProductType getProductType (){
+
+        return this.productType;
+    }
+
+    public void setProductType (ProductType pt){
+
+        this.productType = pt;
+
+    }
+
+
     public double getPrice(){
         return this.price;
     }

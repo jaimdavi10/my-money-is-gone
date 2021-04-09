@@ -1,7 +1,9 @@
 package com.mymoneyisgone.controllers;
 
 
+import com.mymoneyisgone.data.ProductTypeRepository;
 import com.mymoneyisgone.data.PurchaseEntryRepository;
+import com.mymoneyisgone.models.ProductType;
 import com.mymoneyisgone.models.PurchaseEntry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -18,15 +21,20 @@ import javax.validation.Valid;
     public class PurchaseEntryController {
 
         private PurchaseEntryRepository per;
+        private ProductTypeRepository ptr;
 
         @Autowired
-        public PurchaseEntryController (PurchaseEntryRepository per){
+        public PurchaseEntryController (PurchaseEntryRepository per, ProductTypeRepository ptr){
+
             this.per = per;
+            this.ptr = ptr;
         }
 
         @GetMapping
         public String showPurchaseEntryForm (Model model){
 
+            List<ProductType> pt = (List<ProductType>) ptr.findAll();
+            model.addAttribute("productType" , pt);
             model.addAttribute("entry", new PurchaseEntry());
             return "purchase-entry";
 
