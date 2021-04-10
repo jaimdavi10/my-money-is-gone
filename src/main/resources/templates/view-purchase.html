@@ -62,6 +62,20 @@
                 </div>
             </div>
 
+
+            <div class="mb-3" th:each="productType: *{productType}">
+                <div class="row justify-content-center mb-1">
+                    <div class="col-8 col-md-3">
+                        <span th:text="${productType}"></span>
+                        <a th:href="@{/entry/{id}/remove-type/{typeId}(id=${purchaseEntry.entryId}, typeId=${productType.id})}"
+                           class="ml-3 text-danger"><i class="fas fa-trash-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
             <div class="row justify-content-center form-group">
                 <div class="col-8 col-md-3">
                     <span th:text="'Date created: ' + ${#temporals.format(purchaseEntry.created, 'dd-MM-yyyy HH:mm')}"></span><br/>
