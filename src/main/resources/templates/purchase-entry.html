@@ -61,7 +61,7 @@
                 <label for="types" class="col-4 col-form-label">Select Product Type: </label>
             </div>
             <div class="row justify-content-center">
-                <select class="form-control selectpicker col-4" name = "types" id = "types">
+                <select class="form-control selectpicker col-4" th:field="*{productType}" name = "types" id = "types">
                     <option th:each="productType : ${productType}"
                             th:value="${productType.id}"
                             th:text = "${productType}">

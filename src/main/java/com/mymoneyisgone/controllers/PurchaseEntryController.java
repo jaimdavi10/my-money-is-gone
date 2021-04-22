@@ -87,5 +87,18 @@ import java.util.List;
 
         }
 
+//        @GetMapping("/{entryId}/remove-type/{id}")
+//        public String removeType (@PathVariable long entryId, @PathVariable long id, Model model ){
+//
+//            PurchaseEntry originalEntry = this.per.findById(entryId).get();
+//            ProductType productType = this.ptr.findById(id).get();
+//            originalEntry.
+//            this.per.save(originalEntry);
+//            return "redirect:/entry/view/" + entryId;
+//
+//
+//        }
+
+
     }
 

@@ -1,5 +1,7 @@
 package com.mymoneyisgone.models;
 
+import org.hibernate.annotations.JoinColumnOrFormula;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,8 +13,8 @@ public class ProductType {
     private long id;
     private String name;
 
-    @OneToOne(mappedBy = "productType")
-    private PurchaseEntry purchaseEntry;
+    //@OneToOne(mappedBy = "productType")
+    //private PurchaseEntry purchaseEntry;
 
     public ProductType (){};
 
@@ -21,15 +23,15 @@ public class ProductType {
     }
 
 
-    public PurchaseEntry getPurchaseEntry () {
-        return this.purchaseEntry;
-    }
-
-    public void setPurchaseEntry (PurchaseEntry pe) {
-
-        this.purchaseEntry = pe;
-
-    }
+//    public PurchaseEntry getPurchaseEntry () {
+//        return this.purchaseEntry;
+//    }
+//
+//    public void setPurchaseEntry (PurchaseEntry pe) {
+//
+//        this.purchaseEntry = pe;
+//
+//    }
 
     public long getId() {return this.id;}
 
