@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
     <title>Home</title>
     <th:block th:insert="fragments/base :: headerFiles"></th:block>
@@ -10,8 +13,20 @@
     <img id="wallet" th:src="@{/images/emptywallet.jpg}">
 
     <br><br>
-    <div class="container-fluid">
-        <div class="row justify-content-center">
+   <div class="container-fluid">
+<!--        <div class="row justify-content-center" sec:authorize="isAuthenticated()">-->
+<!--            <div class="col-8 col-md-3 text-center">-->
+<!--                <h4 th:text="'Welcome ' + ${user.firstName} + ' ' + ${user.LastName} +  '!'"></h4>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="row justify-content-center" sec:authorize="isAuthenticated()">-->
+<!--            <div class="col-8 col-md-3 text-center">-->
+<!--                <h4 th:text="'Welcome ' + ${#authentication.principal.firstName} + ' ' + ${#authentication.principal.lastName} + '!'"></h4>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <div class="row justify-content-center" sec:authorize="isAnonymous()">
             <div class="col-8 col-md-3 text-center">
                 <a th:href="@{/login}" class="btn btn-light btn-outline-dark">Login</a>
             </div>

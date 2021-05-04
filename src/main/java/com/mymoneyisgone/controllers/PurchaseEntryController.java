@@ -33,8 +33,8 @@ import java.util.List;
         @GetMapping
         public String showPurchaseEntryForm (Model model){
 
-            List<ProductType> pt = (List<ProductType>) ptr.findAll();
-            model.addAttribute("productType" , pt);
+            List<ProductType> pts = (List<ProductType>) ptr.findAll();
+            model.addAttribute("pts" , pts);
             model.addAttribute("entry", new PurchaseEntry());
             return "purchase-entry";
 
@@ -42,6 +42,8 @@ import java.util.List;
 
         @GetMapping("/view/{id}")
         public String showPurchase (@PathVariable Long id, Model model){
+            List<ProductType> pts = (List<ProductType>) ptr.findAll();
+            model.addAttribute("pts" , pts);
             PurchaseEntry purchaseEntry = this.per.findById(id).get();
             model.addAttribute("purchaseEntry", purchaseEntry);
             return "view-purchase";
@@ -76,7 +78,7 @@ import java.util.List;
             original.setPrice(update.getPrice());
             original.setName(update.getName());
             original.setPurchaseLocation(update.getPurchaseLocation());
-
+            original.setProductType(update.getProductType());
         }
 
         @GetMapping("/delete/{id}")

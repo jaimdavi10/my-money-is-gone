@@ -62,10 +62,9 @@
             </div>
             <div class="row justify-content-center">
                 <select class="form-control selectpicker col-4" th:field="*{productType}" name = "types" id = "types">
-                    <option th:each="productType : ${productType}"
-                            th:value="${productType.id}"
-                            th:text = "${productType}">
-
+                    <option th:each="pt : ${pts}"
+                            th:value="${pt.id}"
+                            th:text = "${pt}">
                     </option>
                 </select>
             </div>
