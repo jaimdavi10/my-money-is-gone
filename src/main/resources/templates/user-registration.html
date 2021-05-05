@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration</title>
+    <th:block th:insert="fragments/base :: headerFiles"></th:block>
+</head>
+<body>
+    <div th:replace="fragments/base :: navigation"></div>
+    <div th:replace="fragments/base :: header"></div>
+
+
+    <form id="userform" th:action="@{/user}" th:object="${user}" method="post">
+        <div class="container-fluid">
+            <div class="row justify-content-center form-group">
+                <!-- <label for="price" class="col-2 col-md-1 col-form-label">Price: </label> -->
+                <div class="col-8 col-md-3">
+                    <input class="form-control" id="username" type="text" th:field="*{username}"
+                           placeholder="Username"/>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-3">
+                <div class="col-8 col-md-3">
+                    <span class="text-danger small" th:if="${#fields.hasErrors('username')}"
+                          th:errors="*{username}">
+                    </span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-3">
+                    <input class="form-control" id="email" type="text" th:field="*{email}"
+                           placeholder="E-mail"/>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-3">
+                <div class="col-8 col-md-3">
+                    <span class="text-danger small" th:if="${#fields.hasErrors('email')}"
+                          th:errors="*{email}">
+                    </span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-3">
+                    <input class="form-control" id="firstname" type="text" th:field="*{firstName}"
+                           placeholder="First Name"/>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-8 col-md-3">
+                    <span class="text-danger small" th:if="${#fields.hasErrors('firstName')}"
+                          th:errors="*{firstName}">
+                    </span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-3">
+                    <input class="form-control" id="lastname" type="text" th:field="*{lastName}"
+                           placeholder="Last Name"/>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-8 col-md-3">
+                    <span class="text-danger small" th:if="${#fields.hasErrors('lastName')}"
+                          th:errors="*{lastName}">
+                    </span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-3">
+                    <input class="form-control" id="password" type="text" th:field="*{password}"
+                           placeholder="Password"/>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-8 col-md-3">
+                    <span class="text-danger small" th:if="${#fields.hasErrors('password')}"
+                          th:errors="*{password}">
+                    </span>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-3">
+                    <input type="submit" class="btn btn-light btn-outline-dark" value="Submit" />
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </form>
+
+
+
+    <div th:replace="fragments/base :: footer"></div>
+</body>
+<div th:replace="fragments/base :: scripts"></div>
+</html>

@@ -1,5 +1,7 @@
 package com.mymoneyisgone.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDateTime;
@@ -27,11 +29,14 @@ public class PurchaseEntry {
     private LocalDateTime created;
     private LocalDateTime modified;
 
-    @OneToOne( cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "product_type_id" , referencedColumnName = "id")
     private ProductType productType;
 
-    //private Set<ProductType> productTypes;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="user_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private User user;
 
     public PurchaseEntry (){}
 
@@ -41,6 +46,14 @@ public class PurchaseEntry {
         this.name = name;
         this.purchaseLocation = purchaseLocation;
 
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public ProductType getProductType (){

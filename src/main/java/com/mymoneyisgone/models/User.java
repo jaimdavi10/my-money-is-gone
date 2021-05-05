@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -37,6 +38,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Collection<Role> roles;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    private Set<PurchaseEntry> purchaseEntrySet;
+
     public enum Role { ROLE_ADMIN, ROLE_USER }
 
     public User() { }
@@ -50,6 +54,18 @@ public class User implements UserDetails {
         this.accountNonExpired = true;
         this.accountNonLocked = true;
         this.credentialsNonExpired = true;
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public Set<PurchaseEntry> getPurchaseEntrySet() {
+        return purchaseEntrySet;
+    }
+
+    public void setPurchaseEntrySet(Set<PurchaseEntry> purchaseEntrySet) {
+        this.purchaseEntrySet = purchaseEntrySet;
     }
 
     public void setUsername(String username) {

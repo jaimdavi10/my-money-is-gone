@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="fragments/base :: headerFiles"></th:block>
+    <title>Oops!</title>
+</head>
+<body>
+<div th:replace="fragments/base :: navigation"></div>
+<div th:replace="fragments/base :: header"></div>
+
+<br><br>
+<div class="row justify-content-center">
+    <div class="col-8 mb-3 text-center text-dark">
+        <h2 th:text="${message}">Oh no! Something went wrong! We're working on it :)</h2>
+    </div>
+</div>
+
+
+<div th:replace="fragments/base :: footer"></div>
+</body>
+<th:block th:replace="fragments/base :: scripts"></th:block>
+</html>

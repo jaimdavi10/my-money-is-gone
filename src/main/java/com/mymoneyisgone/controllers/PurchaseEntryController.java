@@ -3,9 +3,12 @@ package com.mymoneyisgone.controllers;
 
 import com.mymoneyisgone.data.ProductTypeRepository;
 import com.mymoneyisgone.data.PurchaseEntryRepository;
+import com.mymoneyisgone.data.UserRepository;
 import com.mymoneyisgone.models.ProductType;
 import com.mymoneyisgone.models.PurchaseEntry;
+import com.mymoneyisgone.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -25,7 +28,6 @@ import java.util.List;
 
         @Autowired
         public PurchaseEntryController (PurchaseEntryRepository per, ProductTypeRepository ptr){
-
             this.per = per;
             this.ptr = ptr;
         }
@@ -50,11 +52,12 @@ import java.util.List;
         }
 
         @PostMapping
-        public String handlePurchaseEntryForm (@Valid @ModelAttribute("entry") PurchaseEntry purchaseEntry, Errors errors){
+        public String handlePurchaseEntryForm (@Valid @ModelAttribute("entry") PurchaseEntry purchaseEntry, @AuthenticationPrincipal User user, Errors errors){
 
             if(errors.hasErrors())
                 return "purchase-entry";
 
+            purchaseEntry.setUser(user);
             this.per.save(purchaseEntry);
 
             return "redirect:/view";

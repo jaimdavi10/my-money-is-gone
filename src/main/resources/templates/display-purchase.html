@@ -15,7 +15,7 @@
                 <div class="col-2 col-md-4"></div>
                 <div id="card" class="col-8 col-md-4 card">
                     <div  class="card-body">
-                        <h5 class="card-title d-inline" th:text="${purchaseEntry.getName()}"></h5>
+                        <h5 class="card-title d-inline" th:text="${purchaseEntry.name}"></h5>
                         <a th:href="@{/entry/view/{id}(id=${purchaseEntry.entryId})}" class="ml-3 text-dark"><i class="fas fa-eye"></i></a>
                         <a th:href="@{/entry/delete/{id}(id=${purchaseEntry.entryId})}" class="ml-3 text-danger"><i class="fas fa-trash-alt"></i></a>
                     </div>
