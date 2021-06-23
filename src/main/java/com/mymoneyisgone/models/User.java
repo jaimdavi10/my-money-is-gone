@@ -5,6 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -17,17 +18,24 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
+    @NotBlank(message = "Email is required")
     @Column(unique = true, nullable = false)
     private String email;
 
+    @NotBlank(message = "Username is required")
     @Column(unique = true, nullable = false)
     private String username;
 
+    @NotBlank(message = "Password is required")
     @Column(nullable = false)
     private String password;
 
+
     private String firstName;
+
+
     private String lastName;
+
     private boolean enabled;
     private boolean accountNonExpired;
     private boolean accountNonLocked;
@@ -119,6 +127,8 @@ public class User implements UserDetails {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public long getId () {return this.id;}
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

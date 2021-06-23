@@ -16,6 +16,12 @@ h2 {
     text-align: center;
 }
 
+h4 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
 #logo {
     width:50px;
     height:50px;
@@ -65,6 +71,11 @@ label {
     height: 75px; }
 
 #card {
+    background-color: #CCFF99;
+    border: 2px solid limegreen;
+}
+
+#card2 {
     background-color: #CCFF99;
     border: 2px solid limegreen;
 }

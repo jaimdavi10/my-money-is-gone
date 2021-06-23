@@ -9,6 +9,8 @@
 <div th:replace="fragments/base :: navigation"></div>
 <div th:replace="fragments/base :: header"></div>
 
+<h4>Enter the information on your purchase and then submit!</h4>
+
 <form id="purchaseform" th:action="@{/entry}" th:object="${entry}" method="post">
     <div class="container-fluid">
         <div class="row justify-content-center form-group">

@@ -7,6 +7,7 @@ import com.mymoneyisgone.data.UserRepository;
 import com.mymoneyisgone.models.ProductType;
 import com.mymoneyisgone.models.PurchaseEntry;
 import com.mymoneyisgone.models.User;
+import com.mymoneyisgone.service.PurchaseEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -25,12 +27,19 @@ import java.util.List;
 
         private PurchaseEntryRepository per;
         private ProductTypeRepository ptr;
+        //private PurchaseEntryService pes;
+
 
         @Autowired
-        public PurchaseEntryController (PurchaseEntryRepository per, ProductTypeRepository ptr){
+        public PurchaseEntryController (PurchaseEntryRepository per, ProductTypeRepository ptr, PurchaseEntryService pes){
             this.per = per;
             this.ptr = ptr;
+            //this.pes = pes;
         }
+
+
+
+
 
         @GetMapping
         public String showPurchaseEntryForm (Model model){
@@ -41,6 +50,28 @@ import java.util.List;
             return "purchase-entry";
 
         }
+
+//        @GetMapping ("/find-by-type")
+//        public String showByProductTypeForm (Model model) {
+//            List<ProductType> pts = (List<ProductType>) ptr.findAll();
+//            model.addAttribute("pts" , pts);
+//            model.addAttribute("productTypeSearch", new String());
+//            return "select-product-type";
+//
+//        }
+//
+//        //maybe a post method for form
+//
+//
+//        @PostMapping("/return")
+//        public String HandleByProductTypeForm (@PathVariable(value="productTypeName") @ModelAttribute("productTypeSearch") String productType, User user, Model model){
+//
+//            //@PathVariable(value="productTypeName") {productTypeName}
+//
+//            List<PurchaseEntry> list = pes.byProductType(productType, user);
+//            model.addAttribute("list", list);
+//            return "display-selected-entries";//html template
+//        }
 
         @GetMapping("/view/{id}")
         public String showPurchase (@PathVariable Long id, Model model){

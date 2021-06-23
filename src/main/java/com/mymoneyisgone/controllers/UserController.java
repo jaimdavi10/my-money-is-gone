@@ -11,19 +11,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
     private UserRepository ur;
+    private PasswordEncoder passwordEncoder;
+
 
     @Autowired
-    public UserController (UserRepository ur) {
+    public UserController (UserRepository ur, PasswordEncoder passwordEncoder) {
         this.ur = ur;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping
@@ -39,7 +44,7 @@ public class UserController {
 
 
         User user = this.ur.findById(id).get();
-        model.addAttribute("user", user);
+        model.addAttribute("tempuser", user);
         return "view-user";
     }
 
@@ -50,6 +55,15 @@ public class UserController {
             return "user-registration";
 
 
+
+
+        user.setAccountNonExpired(true);
+        user.setAccountNonLocked(true);
+        user.setCredentialsNonExpired(true);
+        user.setRoles(Set.of(User.Role.ROLE_USER));
+        user.setEnabled(true);
+        this.ur.save(user);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         this.ur.save(user);
 
         return "redirect:/login";

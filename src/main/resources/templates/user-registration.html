@@ -9,6 +9,8 @@
     <div th:replace="fragments/base :: navigation"></div>
     <div th:replace="fragments/base :: header"></div>
 
+    <h4>If you don't have an account yet, register below!</h4>
+
 
     <form id="userform" th:action="@{/user}" th:object="${user}" method="post">
         <div class="container-fluid">
@@ -73,7 +75,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-8 col-md-3">
-                    <input class="form-control" id="password" type="text" th:field="*{password}"
+                    <input class="form-control" id="password" type="password" th:field="*{password}"
                            placeholder="Password"/>
                 </div>
             </div>

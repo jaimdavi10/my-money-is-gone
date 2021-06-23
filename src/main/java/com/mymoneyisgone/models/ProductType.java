@@ -46,7 +46,7 @@ public class ProductType {
     @Override
     public String toString() {
 
-        return "Product Type: "+ this.name;
+        return this.name;
     }
 
     @Override

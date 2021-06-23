@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <title>Select by Product Type</title>
+    <th:block th:insert="fragments/base :: headerFiles"></th:block>
+</head>
+<body>
+    <div th:replace="fragments/base :: navigation"></div>
+    <div th:replace="fragments/base :: header"></div>
+
+
+    <form id="ptform" th:action="@{/entry/find-by-type/return}" th:object="${productTypeSearch}" method="post">
+        <div class="container-fluid">
+            <div class="form-group">
+                <div class = "row justify-content-center">
+                    <label for="types" class="col-4 col-form-label">Select Product Type: </label>
+                </div>
+                <div class="row justify-content-center">
+<!--                    <select class="form-control selectpicker col-4" th:field="*{name}" name = "types" id = "types">-->
+<!--                        <option th:each="pt : ${pts}"-->
+<!--                                th:value="${pt.name}"-->
+<!--                                th:text = "${pt}">-->
+<!--                        </option>-->
+<!--                    </select>-->
+
+                    <select class="form-control selectpicker col-4" name="types" id="types">
+                        <option th:text="Food"></option>
+                        <option th:text="Outings"></option>
+                        <option th:text="Technology"></option>
+                        <option th:text="Entertainment"></option>
+                        <option th:text="Fashion"></option>
+                        <option th:text="Other"></option>
+                    </select>
+                </div>
+            </div>
+
+
+
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-3">
+                    <input type="submit" class="btn btn-light btn-outline-dark" value="Submit" />
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <div th:replace="fragments/base :: footer"></div>
+</body>
+<div th:replace="fragments/base :: scripts"></div>
+</html>

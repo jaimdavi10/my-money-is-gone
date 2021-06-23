@@ -8,18 +8,42 @@
     <div th:replace="fragments/base :: navigation"></div>
     <div th:replace="fragments/base :: header"></div>
 
+    <h4>Click on the Product Type to view all your entries of that type!</h4>
+
+<!--    <div class="container-fluid mt-5">-->
+<!--        <div th:each="ProductType: ${productTypes}">-->
+<!--            <div class="row justify-content-center mb-3">-->
+<!--                <div class="col-2 col-md-4"></div>-->
+<!--                <div id="card2" class="col-8 col-md-4 card">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title d-inline" th:text="${ProductType}"></h5>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
     <div class="container-fluid mt-5">
         <div th:each="ProductType: ${productTypes}">
+            <a th:href="@{/product-types/{pt}(pt=${ProductType.name})}">
             <div class="row justify-content-center mb-3">
                 <div class="col-2 col-md-4"></div>
+
                 <div id="card" class="col-8 col-md-4 card">
-                    <div class="card-body">
+                    <div  class="card-body">
                         <h5 class="card-title d-inline" th:text="${ProductType}"></h5>
+
                     </div>
                 </div>
+
+                <div class="col-2 col-md-4"></div>
             </div>
+            </a>
         </div>
+
     </div>
+
 
     <div th:replace="fragments/base :: footer"></div>
 </body>
